@@ -72,38 +72,42 @@ def super_brain(driver):
             if "square-inferior" in answer_state and square.text not in inferior_squares:
                 bad_squares.append(square.text)
                 inferior_squares.append(square.text)
-
+        print(good_squares)
         def champ_sorting():
-            for bad_criteria in bad_squares:
+            #for bad_criteria in bad_squares:
+            #    for champ in champs:
+            #        i = champs.index(champ)
+            #        if bad_criteria in champ:
+            #            champs.pop(i)
+            #            champ_sorting()
+
+            #TODO fix, doesn't work properly for whatever reason, deletes the entire list after like 3 tries 
+            for good_criteria in good_squares:
+                if "\n" in good_criteria:
+                    good_criteria.replace("\n", ",")
+                else:
+                    pass
                 for champ in champs:
                     i = champs.index(champ)
-                    if bad_criteria in champ:
+                    print(good_criteria)
+                    print(champ)
+                    if good_criteria not in champ:
                         champs.pop(i)
                         champ_sorting()
 
-            #TODO fix, doesn't work properly for whatever reason, deletes the entire list after like 3 tries
-            # for good_criteria in good_squares:
-            #     for champ in champs:
-            #         i = champs.index(champ)
-            #         print(good_criteria)
-            #         print(champ)
-            #         if good_criteria not in champ:
-            #             champs.pop(i)
-            #             champ_sorting()
-
-            for year in superior_squares:
-                for champ in champs:
-                    if int(year) in champ or champ[8] < int(year):
-                        i = champs.index(champ)
-                        champs.pop(i)
-                        champ_sorting()
-            
-            for year in inferior_squares:
-                for champ in champs:
-                    if int(year) in champ or champ[8] > int(year):
-                        i = champs.index(champ)
-                        champs.pop(i)
-                        champ_sorting()
+            #for year in superior_squares:
+            #    for champ in champs:
+            #        if int(year) in champ or champ[8] < int(year):
+            #            i = champs.index(champ)
+            #            champs.pop(i)
+            #            champ_sorting()
+            #
+            #for year in inferior_squares:
+            #    for champ in champs:
+            #        if int(year) in champ or champ[8] > int(year):
+            #            i = champs.index(champ)
+            #            champs.pop(i)
+            #            champ_sorting()
         champ_sorting()
 
 if __name__ == "__main__":
