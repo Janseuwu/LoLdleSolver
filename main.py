@@ -77,6 +77,7 @@ def super_brain(driver):
                 inferior_squares.append(champ_attr)
 
         def champ_sorting():
+            # sorts by good and bad squares
             for bad_criteria in bad_squares:
                 for champ in champs:
                     i = champs.index(champ)
@@ -92,6 +93,7 @@ def super_brain(driver):
                         champ_sorting()
                         break
 
+            # year handling
             for year in superior_squares:
                 for champ in champs:
                     if int(year) in champ or champ[8] < int(year):
